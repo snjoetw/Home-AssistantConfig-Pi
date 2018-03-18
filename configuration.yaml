@@ -1,0 +1,83 @@
+homeassistant:
+  name: Home Alarm
+  latitude: !secret homeassistant_latitude
+  longitude: !secret homeassistant_longitude
+  elevation: !secret homeassistant_elevation
+  unit_system: metric
+  time_zone: !secret homeassistant_time_zone
+  customize: !include customize.yaml
+
+
+http:
+  api_password: !secret http_password
+  login_attempts_threshold: 2
+  ip_ban_enabled: true
+  trusted_networks:
+    - 127.0.0.1
+    - ::1
+    - 192.168.86.0/24
+
+
+frontend:
+
+
+config:
+
+
+logger:
+  default: warn
+
+
+mqtt:
+  broker: 192.168.86.20
+  protocol: 3.1
+
+
+mqtt_statestream:
+  base_topic: hass_alarm_pi
+  publish_attributes: false
+  publish_timestamps: false
+  exclude:
+    domains:
+      alarm_control_panel
+
+
+alarm_control_panel:
+- platform: manual_mqtt
+  name: Home Alarm
+  state_topic: "home/alarm"
+  command_topic: "home/alarm/set"
+  qos: 2
+  pending_time: 30
+  armed_home:
+    pending_time: 0
+  armed_night:
+    pending_time: 0
+  trigger_time: 120
+
+
+binary_sensor:
+- platform: rpi_gpio
+  bouncetime: 100
+  ports:
+    4: gpio_front_door
+    17: gpio_garage_entry_door
+    18: gpio_laundry_room_window
+    27: gpio_kitchen_window
+#    22: gpio_pin_15
+    23: gpio_family_room_window
+    24: gpio_living_room_window
+    25: gpio_office_window
+    5: gpio_workout_room_window
+    6: gpio_lynns_room_window
+    12: gpio_dressing_room_window
+    13: gpio_annes_room_window
+    19: gpio_upstairs_hallway_motion
+#    16: gpio_pin_36
+#    26: gpio_pin_37
+#    20: gpio_pin_38
+#    21: gpio_pin_40
+
+
+automation: !include automations.yaml
+

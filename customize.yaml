@@ -1,0 +1,24 @@
+binary_sensor.gpio_annes_room_window:
+  friendly_name: Anne's Room Window
+binary_sensor.gpio_dressing_room_window:
+  friendly_name: Dressing Room Window
+binary_sensor.gpio_family_room_window:
+  friendly_name: Family Room Window
+binary_sensor.gpio_front_door:
+  friendly_name: Front Door
+binary_sensor.gpio_garage_entry_door:
+  friendly_name: Garage Entry Door
+binary_sensor.gpio_kitchen_window:
+  friendly_name: Kitchen Window
+binary_sensor.gpio_laundry_room_window:
+  friendly_name: Laundry Room Window
+binary_sensor.gpio_living_room_window:
+  friendly_name: Living Room Window
+binary_sensor.gpio_lynns_room_window:
+  friendly_name: Lynn's Room Window
+binary_sensor.gpio_office_window:
+  friendly_name: Office Window
+binary_sensor.gpio_upstairs_hallway_motion:
+  friendly_name: Upstairs Hallway Motion
+binary_sensor.gpio_workout_room_window:
+  friendly_name: Workout Room Window

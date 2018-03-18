@@ -1,0 +1,45 @@
+- action:
+  - alias: ''
+    data:
+      entity_id: alarm_control_panel.home_alarm
+    service: alarm_control_panel.alarm_trigger
+  alias: Alarm Armed Monitor
+  condition:
+  - condition: state
+    entity_id: input_boolean.is_alarm_armed
+    state: 'on'
+  - condition: or
+    conditions:
+      - condition: state
+        entity_id: alarm_control_panel.home_alarm
+        state: armed_away
+      - condition: state
+        entity_id: alarm_control_panel.home_alarm
+        state: armed_home
+  id: '1520574614785'
+  trigger:
+  - entity_id: binary_sensor.gpio_front_door
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.gpio_garage_entry_door
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.gpio_laundry_room_window
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.gpio_kitchen_window
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.gpio_family_room_window
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.gpio_living_room_window
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.gpio_office_window
+    platform: state
+    to: 'on'
+  - entity_id: binary_sensor.gpio_workout_room_window
+    platform: state
+    to: 'on'
+
