@@ -5,17 +5,14 @@
     service: alarm_control_panel.alarm_trigger
   alias: Alarm Armed Monitor
   condition:
-  - condition: state
-    entity_id: input_boolean.is_alarm_armed
-    state: 'on'
   - condition: or
     conditions:
-      - condition: state
-        entity_id: alarm_control_panel.home_alarm
-        state: armed_away
-      - condition: state
-        entity_id: alarm_control_panel.home_alarm
-        state: armed_home
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: armed_away
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: armed_home
   id: '1520574614785'
   trigger:
   - entity_id: binary_sensor.gpio_front_door
@@ -42,4 +39,3 @@
   - entity_id: binary_sensor.gpio_workout_room_window
     platform: state
     to: 'on'
-
