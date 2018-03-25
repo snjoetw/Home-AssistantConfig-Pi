@@ -24,6 +24,12 @@ frontend:
 config:
 
 
+history:
+
+
+logbook:
+
+
 logger:
   default: warn
 
@@ -37,14 +43,32 @@ mqtt_statestream:
   base_topic: hass_alarm_pi
   publish_attributes: false
   publish_timestamps: false
-  exclude:
-    domains:
-      alarm_control_panel
+  include:
+    entities:
+      - binary_sensor.gpio_annes_room_window
+      - binary_sensor.gpio_dressing_room_window
+      - binary_sensor.gpio_family_room_window
+      - binary_sensor.gpio_front_door
+      - binary_sensor.gpio_garage_entry_door
+      - binary_sensor.gpio_kitchen_window
+      - binary_sensor.gpio_laundry_room_window
+      - binary_sensor.gpio_living_room_window
+      - binary_sensor.gpio_lynns_room_window
+      - binary_sensor.gpio_office_window
+      - binary_sensor.gpio_upstairs_hallway_motion
+      - binary_sensor.gpio_workout_room_window
+
+
+xiaomi_aqara:
+  gateways:
+    - mac:
+      key: !secret xiaomi_aqara_gateways_key
 
 
 alarm_control_panel:
 - platform: manual_mqtt
   name: Home Alarm
+  code: !secret alarm_control_panel_code
   state_topic: "home/alarm"
   command_topic: "home/alarm/set"
   qos: 2
